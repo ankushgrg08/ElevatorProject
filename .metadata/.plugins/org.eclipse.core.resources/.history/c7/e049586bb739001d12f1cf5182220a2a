@@ -1,0 +1,64 @@
+package com.elevator.operator;
+
+import java.util.Scanner;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ElevatorOperationApplication {
+	
+	static int floor;
+
+	public static void main(String[] args) {
+		SpringApplication.run(ElevatorOperationApplication.class, args);
+		System.out.println("Hello World");
+
+        floor = (int) (Math.random() * 10 + 1);
+
+        System.out.println("The elevator is now on floor " +floor);
+        System.out.print("Which floor are you at now (0-10) where 0 = basement: ");
+        //int current_floor = Keyboard.readInt();
+        Scanner sc= new Scanner(System.in);
+        int current_floor= sc.nextInt();
+
+        if(floor == current_floor)
+        {
+            System.out.println("Enter the elevator");
+        }
+        else
+        {
+            MoveElevator(current_floor);
+        }
+
+
+        System.out.println("To which floor would you want to go (0-10) where 0 = basement");
+       // int choice1 = Keyboard.readInt();
+        Scanner sc1= new Scanner(System.in);
+        int target_floor= sc1.nextInt();
+
+        MoveElevator(target_floor);
+    }
+
+    public static void MoveElevator(int target_floor)
+    {
+        int direction;
+        if( target_floor > floor )
+        {
+            System.out.println("The elevator is on it's way up...");
+            direction = 1;
+        }else{
+            System.out.println("The elevator is on it's way down...");
+            direction = -1;
+        }
+
+        while(target_floor != floor)
+        {
+            floor += direction;
+            System.out.println(floor);
+        }
+
+        System.out.println("The elevator has arrived");
+    }
+	
+}

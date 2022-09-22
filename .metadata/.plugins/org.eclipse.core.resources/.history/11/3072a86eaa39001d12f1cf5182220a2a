@@ -1,0 +1,78 @@
+package com.elevator;
+
+import java.awt.geom.*;
+import java.util.*;
+
+public class Elevator {
+	
+	static int floor = 0, choice1, person = 0;
+
+	public static void main(String[] args) {
+		
+		
+		
+	        floor = ((int) (Math.random() * 10 + 1));
+
+	        System.out.println("The elevator is now on floor " +floor);
+	        System.out.print("Which floor are you at now (0-10) where 0 = basement: ");
+	        
+	        Scanner sc= new Scanner(System.in);
+	        int choice1= sc.nextInt();
+	       // choice1 = Keyboard.readInt();
+
+	        if(floor == choice1)
+	        {
+	            System.out.println("Enter the elevator");
+	        }
+
+	        else if(floor > choice1)
+	        {
+	            ElevatorDown();
+	        }
+
+	        else if(floor < choice1)
+	        {
+	            ElevatorUp();
+	        }
+
+	        System.out.println("To which floor would you want to go (0-10) where 0 = basement");
+	        Scanner sc1= new Scanner(System.in);
+	        choice1= sc1.nextInt();
+	        
+	        //choice1 = Keyboard.readInt();
+
+	        if(floor > choice1)
+	        {
+	            ElevatorDown();
+	        }
+
+	        else if(floor < choice1)
+	        {
+	            ElevatorUp();
+	        }
+
+	    }
+
+	    public static void ElevatorUp()
+	    {
+	        System.out.println("The elevator is on it's way up...");
+
+	        for (person = choice1; choice1>=floor; floor++)
+
+	            System.out.println(floor);
+
+	        System.out.println("The elevator has arrived");
+	    }
+
+	    public static void ElevatorDown()
+	    {
+	        System.out.println("The elevator is on it's way down...");
+	        for (person = choice1; choice1<=floor; floor--)
+
+	            System.out.println(floor);
+
+	        System.out.println("The elevator has arrived");
+	    }
+	}
+
+
